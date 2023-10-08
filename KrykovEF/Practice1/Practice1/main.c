@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <locale.h>
+#include <math.h>
+#define DVP 850
+#define DSP 750
+#define WOOD 520
 
 int main() {
     int n;
-    double h, w, d, v_dvp, v_dsp, v_wood,hc;
+    double h, w, d, v_dvp, v_dsp, v_wood, hp, wp, m;
     v_dvp = 0.005;
     v_dsp = 0.015;
     v_wood = 0.01;
@@ -18,24 +22,27 @@ int main() {
         scanf("%lf", &w);
     }
     while ((d < 50) || (d > 90)) {
-        printf("Введите ширину шкафа(от 50 до 90 см):");
+        printf("Введите глубину шкафа(от 50 до 90 см):");
         scanf("%lf", &d);
-    } 
-    n = 0;
-    hc = h-3;
-
-    while (hc > (40+1.5)) {
-        hc = hc - 40 -1.5;
-        n++;
-
     }
-    printf("%d",n);
+    printf("\n");
+    n = 0;
+    hp = h-3;
+
+    while (hp > 40) {
+        hp = hp - 40 -1.5;
+        n++;
+    }
+    //printf("%d",n);
     
-    
+    wp = (w - 3)/100;
+    hp = hp / 100;
     h = h / 100;
     w = w / 100;
     d = d / 100;
-    //printf("%lf %lf %lf %d", h, w, d, n);
+    //printf("%lf %lf %lf %d", h, w, d);
+    m = h * w * v_dvp * DVP + h * w * v_wood * WOOD + v_dsp * DSP * (n * wp * d + 2 * hp * d + 2 * w * d);
+    printf("Масса шкафа: %.0lf кг\n", round(m));
  
 
 
@@ -45,11 +52,11 @@ int main() {
     return 0;
 }
 //Плотности: 
-// ДВП-1000кг/м3
-// ДСП-600кг/м3
-// Дерево-850кг/м3
+// ДВП-850кг/м3
+// ДСП-750кг/м3
+// Дерево-520кг/м3
 //Ширина:
-// ДВП-1000кг/м3
-// ДСП-600кг/м3
-// Дерево-850кг/м3
+// ДВП-5mm
+// ДСП-15mm
+// Дерево-1cm=10mm
 // //
