@@ -27,10 +27,10 @@ int main() {
     }
     printf("\n");
     n = 0;
-    hp = h-3;
+    hp = h - 3;
 
     while (hp > 40) {
-        hp = hp - 40 -1.5;
+        hp = hp - 40 - 1.5;
         n++;
     }
     //printf("%d",n);
@@ -42,12 +42,7 @@ int main() {
     d = d / 100;
     //printf("%lf %lf %lf %d", h, w, d);
     m = h * w * v_dvp * DVP + h * w * v_wood * WOOD + v_dsp * DSP * (n * wp * d + 2 * hp * d + 2 * w * d);
-    printf("Масса шкафа: %.0lf кг\n", round(m));
- 
-
-
-
-
+    printf("Масса шкафа: %lf кг\n", m);
 
     return 0;
 }
