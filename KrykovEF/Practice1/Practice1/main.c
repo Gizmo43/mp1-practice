@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <locale.h>
 #include <math.h>
-#define DVP 850
-#define DSP 750
-#define WOOD 520
+#define DVP 950
+#define DSP 650
+#define WOOD 660
 
 int main() {
     int n;
@@ -35,8 +35,8 @@ int main() {
     }
     //printf("%d",n);
     
-    wp = (w - 3)/100;
-    hp = hp / 100;
+    wp = (w - 3) / 100;
+    hp = (h - 3) / 100;
     h = h / 100;
     w = w / 100;
     d = d / 100;
