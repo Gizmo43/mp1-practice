@@ -40,11 +40,11 @@ int main() {
             printf("Ваше число %d?", ans);
             scanf("%*c%c", &ret);
             if (ret == '>') {
-                a = ans;
+                a = ans+1;
                 ans = (a + b) / 2;
             }
             if (ret == '<') {
-                b = ans;
+                b = ans-1;
                 ans = (a + b) / 2; 
             }
             count++;
