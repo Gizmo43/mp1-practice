@@ -13,15 +13,13 @@ void dec(int* x, int n,int ans) {
             ans = ans / 10;
         }
     }
-
-
 }
 
 int main() {
     int a[N] = {0}, b[N] = {0}, n, i, j, ans, cow, bull, d, cnt[10] = {0};
     setlocale(LC_ALL, "Rus");
     do {
-        printf("¬ведите длинну загадываемого числа(1-5): ");
+        printf("¬ведите длину загадываемого числа(1-5): ");
         scanf("%d", &n);
     } while ((n > 5) || (n < 1));
 
@@ -35,12 +33,12 @@ int main() {
         a[i] = d;
         cnt[d]++;
     }
-    for (i = 0; i < n; i++)
-        printf("%d ", a[i]);
+    /*for (i = 0; i < n; i++)
+        printf("%d ", a[i]);*/
 
     do {
         cow = bull = 0;
-        printf("¬ведите число длинны %d: ",n);
+        printf("¬ведите число длины %d: ",n);
         scanf("%d", &ans);
         dec(&(b[0]), n, ans);
         /*for (i = 0; i < n; i++)
