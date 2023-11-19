@@ -3,8 +3,6 @@
 #define N 10 //кол-во товаров в базе
 
 
-
-
 int sum = 0, disc_sum = 0;
 int pr1 = 5000, pr2 = 8000, pr3 = 5000, pr4 = 7000, pr5 = 4000, pr6 = 20000, pr7 = 32000, pr8 = 35000, pr9 = 50000, pr10 = 40000; //цены
 int scan_prod(int* x,int code) {
@@ -74,11 +72,6 @@ void print_check(int i,int * prod_list) {
         }
     }
 }
-
-
-
-
-
 
 void main() {
     
@@ -182,18 +175,4 @@ void main() {
 
     printf("Итого: %d\n", sum);
     printf("К оплате: %d\n", disc_sum);
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
 }
