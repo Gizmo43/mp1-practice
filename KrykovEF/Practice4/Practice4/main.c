@@ -32,13 +32,12 @@ void print_check()
 {
     for (int i = 0; i < N; i++) {
         if (prod_list[i] != 0) {
-            printf("%s: цена - %.2f количество - %d скидка - %.2f%%\n", names[i], prices[i], prod_list[i], discounts[i]);
+            printf("%s: цена - %.2f количество - %d скидка - %.0f%%\n", names[i], prices[i], prod_list[i], discounts[i]);
             sum += prod_list[i] * prices[i];
             disc_sum += prod_list[i] * prices[i] * (1 - discounts[i] / 100);
         }
     }
 }
-
 void print_total()
 {
     printf("Итого: %.2f К оплате: %.2f\n", sum, disc_sum);
@@ -64,17 +63,11 @@ void main() {
                 continue;
             }
             prod_list[n]++;
-            printf("%s: цена - %.2f скидка - %.2f%%\n", names[n], prices[n], discounts[n]);
+            printf("%s: цена - %.2f скидка - %.0f%%\n", names[n], prices[n], discounts[n]);
         }
     } while (oper != 2);
 
     printf("\nЧек: \n");
     print_check();
     print_total();
-
-    //printf("Итого: %d\n", sum);
-    //printf("К оплате: %d\n", disc_sum);
-}
-
-
-    
+}    
