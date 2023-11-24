@@ -7,16 +7,14 @@
 
 
 char* code_base[N] = { "1001", "1002", "1003", "1004", "1005","1006",  "1007", "1008", "1009", "1010"};
-//int code_base[N][4] = { {1,0,0,1},{1,0,0,2},{1,0,0,3},{1,0,0,4},{1,0,0,5},
-//    {1,0,0,6},{1,0,0,7},{1,0,0,8},{1,0,0,9},{1,0,1,0}, };
-char* names[N] = {"1","2", "3", "4", "5", "6", "7","8","9","10"};
-float* prices[N] = { 5000,8000,5000,7000,4000,20000,32000,35000,50000,40000 };
-float* discounts[N] = {10,5,10,5,10,15,15,15,0,0};
+char* names[N] = {"Шатун 2JZ GE","Гбц 2JZ GE", "Распредвалы 2jz GE", "Гбц SR20DE", "Распредвалы SR20DE",
+"Турбокомпрессор Garret M24", "Турбокомпрессор Borg Warner S200SX","Турбокомпрессор Holset HE221W"
+,"Буд MoTeC MX00 ECUs","Буд AEM FIC 6"};
+float prices[N] = { 5000,8000,5000,7000,4000,20000,32000,35000,50000,40000 };
+float discounts[N] = {10,5,10,5,10,15,15,15,0,0};
 int prod_list[N] = { 0 };
 
-int sum = 0, disc_sum = 0;
-//int pr1 = 5000, pr2 = 8000, pr3 = 5000, pr4 = 7000, pr5 = 4000,
-//pr6 = 20000, pr7 = 32000, pr8 = 35000, pr9 = 50000, pr10 = 40000; //цены
+float sum = 0, disc_sum = 0;
 
 int scan_prod(char* code) {
     int i = 0;
@@ -24,7 +22,6 @@ int scan_prod(char* code) {
     {
         if (strcmp(code, code_base[i]) == 0)
         {
-
             return i;
         }
     }
@@ -32,10 +29,20 @@ int scan_prod(char* code) {
 }
 
 void print_check()
-{}
+{
+    for (int i = 0; i < N; i++) {
+        if (prod_list[i] != 0) {
+            printf("%s: цена - %.2f количество - %d скидка - %.2f%%\n", names[i], prices[i], prod_list[i], discounts[i]);
+            sum += prod_list[i] * prices[i];
+            disc_sum += prod_list[i] * prices[i] * (1 - discounts[i] / 100);
+        }
+    }
+}
 
 void print_total()
-{}
+{
+    printf("Итого: %.2f К оплате: %.2f\n", sum, disc_sum);
+}
 
 void main() {
     
@@ -57,7 +64,7 @@ void main() {
                 continue;
             }
             prod_list[n]++;
-            printf("%s: цена - %f, скидка - %f\n", names[n], prices[n], discounts[n]);
+            printf("%s: цена - %.2f скидка - %.2f%%\n", names[n], prices[n], discounts[n]);
         }
     } while (oper != 2);
 
