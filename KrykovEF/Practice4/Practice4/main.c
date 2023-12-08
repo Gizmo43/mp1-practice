@@ -8,10 +8,10 @@
 
 char* code_base[N] = { "1001", "1002", "1003", "1004", "1005","1006",  "1007", "1008", "1009", "1010"};
 char* names[N] = {"Шатун 2JZ GE","Гбц 2JZ GE", "Распредвалы 2jz GE", "Гбц SR20DE", "Распредвалы SR20DE",
-"Турбокомпрессор Garret M24", "Турбокомпрессор Borg Warner S200SX","Турбокомпрессор Holset HE221W"
-,"Буд MoTeC MX00 ECUs","Буд AEM FIC 6"};
-float prices[N] = { 5000,8000,5000,7000,4000,20000,32000,35000,50000,40000 };
-float discounts[N] = {10,5,10,5,10,15,15,15,0,0};
+                  "Турбокомпрессор Garret M24", "Турбокомпрессор Borg Warner S200SX",
+                  "Турбокомпрессор Holset HE221W", "Буд MoTeC MX00 ECUs", "Буд AEM FIC 6"};
+float prices[N] = { 5000, 8000, 5000, 7000, 4000, 20000, 32000, 35000, 50000, 40000 };
+float discounts[N] = {10, 5, 10, 5, 10, 15, 15, 15, 0, 0};
 int prod_list[N] = { 0 };
 
 float sum = 0, disc_sum = 0;
@@ -34,7 +34,7 @@ void print_check()
         if (prod_list[i] != 0) {
             printf("%s: цена - %.2f количество - %d скидка - %.0f%%\n", names[i], prices[i], prod_list[i], discounts[i]);
             sum += prod_list[i] * prices[i];
-            disc_sum += prod_list[i] * prices[i] * (1 - discounts[i] / 100);
+            disc_sum += prod_list[i] * prices[i] * (1.f - discounts[i] / 100.f);
         }
     }
 }
