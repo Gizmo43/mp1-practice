@@ -4,6 +4,7 @@
 
 
 int stat(const char* path, struct stat* buf);
+//void* calloc(size_t num, size_t size);
 
 char* file_path(const char* str1, const char* str2) {
 
@@ -24,13 +25,21 @@ char* file_path(const char* str1, const char* str2) {
 
 void main() {
     char path[100];
-    setlocale(LC_ALL, "Rus");
-    printf("Путь: ");
-    scanf("%s", path);
+    int i = 0;
     DIR *d;
     struct dirent *ent;
     struct stat fileStat;
+    struct file_data {
+        char* name;
+        long int size;
+    };
+    struct file_data *files = (struct file_data*)malloc(1*sizeof(struct file_data));
 
+
+
+    setlocale(LC_ALL, "Rus");
+    printf("Путь: ");
+    scanf("%s", path);
     d = opendir(path);
     if (d) {
         while ((ent = readdir(d)) != NULL) {
@@ -41,10 +50,19 @@ void main() {
             stat(file_path(path, ent->d_name), &(fileStat));
             
             printf("%s Размер: %ld байт\n", ent->d_name, fileStat.st_size);
-            //printf("Имя: %s\t Позиция в директории: %ld\n",ent->d_name, telldir(d));
+            struct file_data new = { ent->d_name , fileStat.st_size };
+            calloc(1, sizeof(struct file_data));
+            files[i].name = new.name;
+            files[i].size = new.size;
+            i++;
+
+
+
         }
         closedir(d);
     }
-    
-
+    for (i = 0; i < 4; i++) {
+        printf("%s %ld", files[i].name, files[i].size);
+    }
+    free(files);
 }
