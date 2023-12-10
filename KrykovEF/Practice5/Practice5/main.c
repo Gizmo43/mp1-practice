@@ -1,4 +1,5 @@
 #include<locale.h>
+#include<time.h>
 #include"dirent.h"
 
 DIR* d;
@@ -110,6 +111,7 @@ void print_files(file_data* files, int N) {
 void main() {
     char path[100];
     int i = 0, num, input = 0;
+    time_t t_start, t_finish;
     struct stat fileStat;
 
     setlocale(LC_ALL, "Rus");
@@ -149,16 +151,25 @@ void main() {
             print_files(&files_origin[0], num);
             break;
         case 1:
+            t_start = time(NULL);
             select_sort(&files[0], num);
+            t_finish = time(NULL);
             print_files(&files[0], num);
+            printf("Время сортировки: %lf\n", difftime(t_finish,t_start));
             break;
         case 2:
+            t_start = time(NULL);
             insert_sort(&files[0], num);
+            t_finish = time(NULL);
             print_files(&files[0], num);
+            printf("Время сортировки: %lf\n", difftime(t_finish, t_start));
             break;
         case 3:
+            t_start = time(NULL);
             qsort(files, num, sizeof(struct file_data), cmp_size);
+            t_finish = time(NULL);
             print_files(&files[0], num);
+            printf("Время сортировки: %lf\n", difftime(t_finish, t_start));
             break;
         case 4:
             break;
