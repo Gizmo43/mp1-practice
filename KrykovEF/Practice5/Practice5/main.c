@@ -142,13 +142,15 @@ void main() {
     clock_t t_finish;
     struct stat fileStat;
     double time_f;
+    struct file_data* files_origin;
+    struct file_data* files;
 
     setlocale(LC_ALL, "Rus");
     printf("Путь: ");
     scanf("%s", path);
     num = file_num(path);
-    struct file_data* files_origin = (struct file_data*)malloc(num * sizeof(struct file_data));
-    struct file_data* files = (struct file_data*)malloc(num * sizeof(struct file_data));
+    files_origin = (struct file_data*)malloc(num * sizeof(struct file_data));
+    files = (struct file_data*)malloc(num * sizeof(struct file_data));
     //printf("%d\n", num);
 
     d = opendir(path);
@@ -214,6 +216,7 @@ void main() {
     } while (input != 4);
     
     free(files);
+    free(files_origin);
 }
 
 
