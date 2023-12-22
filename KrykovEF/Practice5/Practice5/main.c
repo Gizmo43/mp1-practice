@@ -172,8 +172,8 @@ void main() {
         closedir(d);
     }
     
+    files = (file_data*)malloc(num * sizeof(file_data));
     do {
-        files = (file_data*)malloc(num * sizeof(file_data));
         //memcpy(files, files_origin, num * sizeof(file_data));
         for (i = 0; i < num; i++) {
             files[i].name = (char*)malloc((strlen(files_origin[i].name) + 1) * sizeof(char));
@@ -224,12 +224,11 @@ void main() {
         for (i = 0; i < num; i++)
         {
             free(files[i].name);
-        }
-        free(files);
+        }       
 
     } while (input != 4);
     
-    
+    free(files);
     for (i = 0; i < num; i++)
     {
         free(files_origin[i].name);
