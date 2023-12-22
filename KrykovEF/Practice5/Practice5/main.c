@@ -31,7 +31,7 @@ char* file_path(const char* str1, const char* str2) {
 
 char* convert(const char* str1) {
     size_t str1_len = strlen(str1), new_str_len = str1_len + 1;
-    char* new_str = malloc(new_str_len * sizeof(char));
+    char* new_str = (char *)malloc(new_str_len * sizeof(char));
     strcpy(new_str, str1);
 
     return new_str;
@@ -144,26 +144,28 @@ void main() {
     double time_f;
     struct file_data* files_origin;
     struct file_data* files;
-    struct file_data new;
 
     setlocale(LC_ALL, "Rus");
     printf("Путь: ");
     scanf("%s", path);
     num = file_num(path);
     files_origin = (file_data*)malloc(num * sizeof(file_data));
-    files = (file_data*)malloc(num * sizeof(file_data));
 
     d = opendir(path);
     if (d) {
         while ((ent = readdir(d)) != NULL) {
+            char* filePath;
             if (ent->d_type != DT_REG) {
                 continue;
             }
-            stat(file_path(path, ent->d_name), &(fileStat));
+            filePath = file_path(path, ent->d_name);
+            stat(filePath, &(fileStat));
+            free(filePath);
 
-            struct file_data new = { convert(ent->d_name) , fileStat.st_size };
+            file_data new = { convert(ent->d_name) , fileStat.st_size };
 
-            files_origin[i].name = new.name;
+            files_origin[i].name = (char *)malloc((strlen(new.name) + 1) * sizeof(char));
+            memcpy(files_origin[i].name, new.name, strlen(new.name) + 1);
             files_origin[i].size = new.size;
             i++;
         }
@@ -171,7 +173,13 @@ void main() {
     }
     
     do {
-        memcpy(files, files_origin, num * sizeof(file_data));
+        files = (file_data*)malloc(num * sizeof(file_data));
+        //memcpy(files, files_origin, num * sizeof(file_data));
+        for (i = 0; i < num; i++) {
+            files[i].name = (char*)malloc((strlen(files_origin[i].name) + 1) * sizeof(char));
+            memcpy(files[i].name, files_origin[i].name, strlen(files_origin[i].name) + 1);
+            files[i].size = files_origin[i].size;
+        }
         printf("Выберите команду: 0 - вывести оригинал\n");
         printf("Сортировки: 1 - выбором, 2 - вставками, 3 - быстрая \n");
         printf("4 - завершить программу\n");
@@ -184,9 +192,9 @@ void main() {
             break;
         case 1:
             t_start = clock();
-            select_sort(&files[0], num);
-            print_files(&files[0], num);            
+            select_sort(&files[0], num);           
             t_finish = clock();
+            print_files(&files[0], num);
             time_f = (double)((t_finish - t_start)) / CLOCKS_PER_SEC;
             
             printf("Время сортировки: %.5lf\n", time_f);
@@ -194,8 +202,8 @@ void main() {
         case 2:
             t_start = clock();
             insert_sort(&files[0], num);
-            print_files(&files[0], num);
             t_finish = clock();
+            print_files(&files[0], num);
             time_f = (double)((t_finish - t_start)) / CLOCKS_PER_SEC;
             printf("Время сортировки: %.5lf\n", time_f);
             break;
@@ -203,8 +211,8 @@ void main() {
             t_start = clock();
             //qsort(files, num, sizeof(struct file_data), cmp_size);
             qsort_s(&files[0], 0, num - 1);
-            print_files(&files[0], num);
             t_finish = clock();
+            print_files(&files[0], num);
             time_f = (double)((t_finish - t_start)) / CLOCKS_PER_SEC;
             printf("Время сортировки: %.5lf\n", time_f);
             break;
@@ -213,9 +221,19 @@ void main() {
         default:
             printf("Input error\n");
         }
+        for (i = 0; i < num; i++)
+        {
+            free(files[i].name);
+        }
+        free(files);
+
     } while (input != 4);
     
-    free(files);
+    
+    for (i = 0; i < num; i++)
+    {
+        free(files_origin[i].name);
+    }
     free(files_origin);
 }
 
