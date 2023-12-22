@@ -144,14 +144,14 @@ void main() {
     double time_f;
     struct file_data* files_origin;
     struct file_data* files;
+    struct file_data new;
 
     setlocale(LC_ALL, "Rus");
     printf("Путь: ");
     scanf("%s", path);
     num = file_num(path);
-    files_origin = (struct file_data*)malloc(num * sizeof(struct file_data));
-    files = (struct file_data*)malloc(num * sizeof(struct file_data));
-    //printf("%d\n", num);
+    files_origin = (file_data*)malloc(num * sizeof(file_data));
+    files = (file_data*)malloc(num * sizeof(file_data));
 
     d = opendir(path);
     if (d) {
@@ -171,7 +171,7 @@ void main() {
     }
     
     do {
-        memcpy(files, files_origin, num * sizeof(struct file_data));
+        memcpy(files, files_origin, num * sizeof(file_data));
         printf("Выберите команду: 0 - вывести оригинал\n");
         printf("Сортировки: 1 - выбором, 2 - вставками, 3 - быстрая \n");
         printf("4 - завершить программу\n");
