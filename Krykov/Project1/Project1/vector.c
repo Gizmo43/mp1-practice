@@ -67,3 +67,26 @@ double scal(TVector* v1, TVector* v2) {
 
 	return res;
 }
+
+void scan(TVector* v,const char* name) {
+	int i = 0;
+	FILE* f = fopen(name, "r");
+	if (f == NULL) {
+		printf("Not found");
+		abort();
+	}
+	fscanf(f, "%d", &(v->n));
+	v->x = (double*)malloc(v->n * sizeof(double));
+	for (i; i < v->n; i++) {
+		fscanf(f, "%lf", &(v->x[i]));
+	}
+
+	fclose(f);
+}
+void write(TVector* v) {
+
+
+
+
+
+}
