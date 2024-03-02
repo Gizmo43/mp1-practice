@@ -19,6 +19,6 @@ TVector minus(TVector* v1, TVector* v2);
 double scal(TVector* v1, TVector* v2);
 
 
-void scan(TVector* v);
-void write(TVector* v);
+void scan(TVector* v1, TVector* v2, const char* name);
+void write(TVector* v1, TVector* v2,double sc, const char* name);
 #endif
