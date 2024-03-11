@@ -107,7 +107,7 @@ std::ostream& operator<< (std::ostream& out,const TVector& v) {
 	for (int i = 0; i < v.n; i++) {
 		out << v.x[i] << " ";
 	}
-	ofstream f("vc_out.txt", ios_base::app);
+	/*ofstream f("vc_out.txt", ios_base::app);
 
 	if (f.is_open()) { 
 		f << v.n << endl;
@@ -117,7 +117,7 @@ std::ostream& operator<< (std::ostream& out,const TVector& v) {
 		f << endl;
 
 		f.close();
-	}
+	}*/
 
 	
 	return out;
@@ -130,7 +130,7 @@ void clean() {
  
 
 void scan(TVector& v1, TVector& v2, const char* name) {
-	ifstream f("vc_in.txt");
+	ifstream f(name);
 	f >> v1.n;
 	if (v1.x != nullptr) {
 		delete[] v1.x;
@@ -149,8 +149,25 @@ void scan(TVector& v1, TVector& v2, const char* name) {
 	}
 
 	f.close();
-
 }
+
+void append(const TVector& v, const char* name) {
+
+	ofstream f(name, ios_base::app);
+
+	if (f.is_open()) {
+		f << v.n << endl;
+		for (int i = 0; i < v.n; i++) {
+			f << v.x[i] << " ";
+		}
+		f << endl;
+	}
+	
+	f.close();
+}
+
+
+
 
  
 
