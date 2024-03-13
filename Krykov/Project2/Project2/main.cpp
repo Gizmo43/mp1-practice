@@ -1,16 +1,17 @@
 #include "vector.h"
-int main(int argc, char* argv[]) {
+int main(int argc,const char* argv[]) {
 	 
 	TVector v1, v2;
 	int n;
-	char* inname, * outname;
+	//char* inname, * outname;
 	if (argc < 4) {
 		std::cout << "Incorrect arguments";
 		return 1;
 	}
 
-	inname = argv[2];
-	outname = argv[3];
+	std::string inname(argv[2]);
+	std::string outname(argv[3]);
+
 	//std::cin >> v1 >> v2;
 	scan(v1, v2, inname);
 	TVector res1 = v1 + v2; //работает?
@@ -24,9 +25,9 @@ int main(int argc, char* argv[]) {
 	std::cout << res2;
 	std::cout << res3;
 
-	append(res1, outname);
-	append(res2, outname);
-	append(res3, outname);
+	append(res1, "vc_out.txt");
+	append(res2, "vc_out.txt");
+	append(res3, "vc_out.txt");
 
 
 	return 0;
