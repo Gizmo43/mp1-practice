@@ -11,7 +11,7 @@ int main(int argc,char** argv[]) {
 		return 1;
 	}
 	n = atoi(argv[1]);
-	printf("n = % d\n", n);
+	//printf("n = % d\n", n);
 	inname = argv[2];
 	outname = argv[3];
 
@@ -25,6 +25,8 @@ int main(int argc,char** argv[]) {
 	fill(&v1);
 	print(&v1);
 	print(&v2);*/
+
+
 	scan(&v1, &v2, inname);
 	
 
