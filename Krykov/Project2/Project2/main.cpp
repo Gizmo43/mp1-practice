@@ -1,16 +1,16 @@
 #include "vector.h"
-int main(int argc,const char* argv[]) {
+int main(int argc, char* argv[]) {
 	 
 	TVector v1, v2;
-	int n;
+	char* inname, * outname;
 	//char* inname, * outname;
 	if (argc < 4) {
 		std::cout << "Incorrect arguments";
 		return 1;
 	}
 
-	std::string inname(argv[2]);
-	std::string outname(argv[3]);
+	inname = argv[2];
+	outname = argv[3];
 
 	//std::cin >> v1 >> v2;
 	scan(v1, v2, inname);
