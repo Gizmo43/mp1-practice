@@ -4,13 +4,13 @@ int main(int argc, char* argv[]) {
 	TVector v1, v2;
 	char* inname, * outname;
 	//char* inname, * outname;
-	if (argc < 4) {
+	if (argc < 3) {
 		std::cout << "Incorrect arguments";
 		return 1;
 	}
 
-	inname = argv[2];
-	outname = argv[3];
+	inname = argv[1];
+	outname = argv[2];
 
 	//std::cin >> v1 >> v2;
 	scan(v1, v2, inname);

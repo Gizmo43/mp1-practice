@@ -17,7 +17,7 @@ struct TVector {
 	TVector operator+ (const TVector&);
 	TVector operator- (const TVector&);
 	TVector operator* (const TVector&);
-	TVector& operator= (TVector& v);
+	const TVector& operator= (TVector& v);
 
 
 };
