@@ -6,14 +6,14 @@ int main(int argc,char** argv[]) {
 	TVector v1, v2, s1, s2;
 	char* inname, * outname;
 
-	if (argc < 4) {
+	if (argc < 3) {
 		printf("Incorrect arguments");
 		return 1;
 	}
 	n = atoi(argv[1]);
 	//printf("n = % d\n", n);
-	inname = argv[2];
-	outname = argv[3];
+	inname = argv[1];
+	outname = argv[2];
 
 
 	/*printf("Lenght of v1= ");
