@@ -102,7 +102,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions); _CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -127,15 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Contact.c" />
-    <ClCompile Include="date.c" />
+    <ClCompile Include="Functions.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="Person.c" />
-    <ClCompile Include="PhysData.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contact.h" />
     <ClInclude Include="date.h" />
+    <ClInclude Include="Functions.h" />
+    <ClInclude Include="Library.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="PhysData.h" />
   </ItemGroup>
