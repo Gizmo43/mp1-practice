@@ -8,10 +8,8 @@
 
 int main(int argc, char* argv[]) {
 
-	int i;
 	char* inname, * outname;
 	TLib Libr;
-
 
 	if (argc < 3) {
 		printf("Incorrect arguments");
@@ -26,5 +24,7 @@ int main(int argc, char* argv[]) {
 	qsort(Libr.x, Libr.n, sizeof(TPerson), compare);
 
 	write(&(Libr), outname);
+
+	free(Libr.x);
 	return 0;
 }

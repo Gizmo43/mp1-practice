@@ -1,14 +1,16 @@
 #pragma once
-#include"date.h"
-#include"PhysData.h"
-#include"Contact.h"
 
+#include "date.h"
+#include "PhysData.h"
+#include "Contact.h"
+
+#define STRING_LEN 255
 
 
 typedef struct {
-	char FirstName[50];
-	char LastName[50];
-	char SecondName[50];
+	char* FirstName; // char *
+	char* LastName; // char *
+	char* SecondName; // char *
 	TDate birth;
 	TPhysData par;
 	TContact info;

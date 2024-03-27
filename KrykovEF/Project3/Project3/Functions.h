@@ -3,6 +3,7 @@
 #include <string.h>
 
 void alloc(TLib* l, int n);
+// void free(...)
 int compare(const void* a, const void* b);
 int strcmp(const char* str1, const char* str2);
 

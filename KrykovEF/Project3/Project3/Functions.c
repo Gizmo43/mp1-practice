@@ -1,15 +1,36 @@
 #include "Functions.h"
 
 void alloc(TLib* l, int n) {
+	int i = 0;
 	l->n = n;
 	l->x = (TPerson*)malloc(sizeof(TPerson) * n);
+	for (; i < n; i++)
+	{
+		&(l->x[i].FirstName) = (char*)malloc(STRING_LEN * sizeof(char));
+		l->x[i].LastName = (char*)malloc(STRING_LEN * sizeof(char));
+		l->x[i].SecondName = (char*)malloc(STRING_LEN * sizeof(char));
+
+		l->x[i].par.gender = (char*)malloc(STRING_LEN * sizeof(char));
+		l->x[i].par.nation = (char*)malloc(STRING_LEN * sizeof(char));
+
+		l->x[i].info.address.country = (char*)malloc(STRING_LEN * sizeof(char));
+		l->x[i].info.address.area = (char*)malloc(STRING_LEN * sizeof(char));
+		l->x[i].info.address.city = (char*)malloc(STRING_LEN * sizeof(char));
+		l->x[i].info.address.district = (char*)malloc(STRING_LEN * sizeof(char));
+		l->x[i].info.address.street = (char*)malloc(STRING_LEN * sizeof(char));
+
+
+
+	}
 };
 
 int compare(const void* a, const void* b) {
 	TPerson* PersonA = (TPerson*)a;
 	TPerson* PersonB = (TPerson*)b;
-	return (strcmp(PersonA->LastName, PersonB->LastName)*(-1));
+	return (strcmp(PersonA->SecondName, PersonB->SecondName));
 }
+
+void sortLib(TLib* lib){}
 
 void scan(TLib* l1, const char* name) {
 	int i = 0;
@@ -20,12 +41,12 @@ void scan(TLib* l1, const char* name) {
 	}
 	fscanf(f, "%d", &(l1->n));
 
-	l1->x = (TPerson*)malloc(l1->n * sizeof(TPerson));
+	alloc(l1, l1->n);
 
 	for (i = 0; i < l1->n; i++) {
-		fscanf(f, "%s", &(l1->x[i].FirstName));
-		fscanf(f, "%s", &(l1->x[i].LastName));
-		fscanf(f, "%s", &(l1->x[i].SecondName));
+		fscanf(f, "%s", l1->x[i].FirstName);
+		fscanf(f, "%s", l1->x[i].LastName);
+		fscanf(f, "%s", l1->x[i].SecondName);
 
 		fscanf(f, "%d", &(l1->x[i].birth.day));
 		fscanf(f, "%d", &(l1->x[i].birth.month));
@@ -36,40 +57,15 @@ void scan(TLib* l1, const char* name) {
 		fscanf(f, "%d", &(l1->x[i].par.height));
 		fscanf(f, "%d", &(l1->x[i].par.weight));
 
-		fscanf(f, "%lli", &(l1->x[i].info.number));
-		fscanf(f, "%s", &(l1->x[i].info.country));
-		fscanf(f, "%s", &(l1->x[i].info.area));
-		fscanf(f, "%s", &(l1->x[i].info.city));
-		fscanf(f, "%s", &(l1->x[i].info.district));
-		fscanf(f, "%s", &(l1->x[i].info.street));
-		fscanf(f, "%d", &(l1->x[i].info.house));
-		fscanf(f, "%d", &(l1->x[i].info.flat));
-
-		/*printf("%s", l1->x[i].FirstName);
-		printf("%s", l1->x[i].LastName);
-		printf("%s", l1->x[i].SecondName);
-
-		printf("%d", l1->x[i].birth.day);
-		printf("%d", l1->x[i].birth.month);
-		printf("%d", l1->x[i].birth.year);
-
-		printf("%s", l1->x[i].par.gender);
-		printf("%s", l1->x[i].par.nation);
-		printf("%d", l1->x[i].par.height);
-		printf("%d", l1->x[i].par.weight);
-
-		printf("%d", l1->x[i].info.number);
-		printf("%s", l1->x[i].info.country);
-		printf("%s", l1->x[i].info.area);
-		printf("%s", l1->x[i].info.city);
-		printf("%s", l1->x[i].info.district);
-		printf("%s", l1->x[i].info.street);
-
-		printf("%d", l1->x[i].info.house);
-		printf("%d\n", l1->x[i].info.flat);*/
-
-	}	
-
+		fscanf(f, "%lli", &(l1->x[i].info.phone_number));
+		fscanf(f, "%s", &(l1->x[i].info.address.country));
+		fscanf(f, "%s", &(l1->x[i].info.address.area));
+		fscanf(f, "%s", &(l1->x[i].info.address.city));
+		fscanf(f, "%s", &(l1->x[i].info.address.district));
+		fscanf(f, "%s", &(l1->x[i].info.address.street));
+		fscanf(f, "%d", &(l1->x[i].info.address.house));
+		fscanf(f, "%d", &(l1->x[i].info.address.flat));
+	}
 
 	fclose(f);
 }
@@ -95,21 +91,15 @@ void write(TLib* l1,const char* name) {
 		fprintf(f, "%dcm ", l1->x[i].par.height);
 		fprintf(f, "%dkg\n", l1->x[i].par.weight);
 
-		fprintf(f, "+%lli\n", l1->x[i].info.number);
-		fprintf(f, "%s->", l1->x[i].info.country);
-		fprintf(f, "%s->", l1->x[i].info.area);
-		fprintf(f, "%s->", l1->x[i].info.city);
-		fprintf(f, "%s->", l1->x[i].info.district);
-		fprintf(f, "%s ", l1->x[i].info.street);
-		fprintf(f, "%d ", l1->x[i].info.house);
-		fprintf(f, "%d\n", l1->x[i].info.flat);
+		fprintf(f, "+%lli\n", l1->x[i].info.phone_number);
+		fprintf(f, "%s->", l1->x[i].info.address.country);
+		fprintf(f, "%s->", l1->x[i].info.address.area);
+		fprintf(f, "%s->", l1->x[i].info.address.city);
+		fprintf(f, "%s->", l1->x[i].info.address.district);
+		fprintf(f, "%s ", l1->x[i].info.address.street);
+		fprintf(f, "%d ", l1->x[i].info.address.house);
+		fprintf(f, "%d\n", l1->x[i].info.address.flat);
 		fprintf(f, "\n");
-
-
 	}
-
-
-	
-
 	fclose(f);
 }
