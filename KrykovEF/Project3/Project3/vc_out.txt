@@ -1,0 +1,20 @@
+Ivan IgorevicBorovkov Borovkov 15/10/1977
+ Male Russian 202cm 95kg
++79024044202
+Russia->Nizhny_NNizhny_NAvtozavoDyakonov->Nizhny_NAvtozavoDyakonov->AvtozavoDyakonov->Dyakonov 14 56
+
+Adam William Rodrigue 8/6/1995
+ Male Mexican 180cm 75kg
++15559876543
+Canada->Ontario->Toronto->DowntownYonge_StÈ->Yonge_StÈ 456 10
+
+Sophia Marie Thompson 15/3/1989
+ Female French 165cm 60kg
++15551234567
+United_SCalifornLos_AngeHollywooSunset_B{->CalifornLos_AngeHollywooSunset_B{->Los_AngeHollywooSunset_B{->HollywooSunset_B{->Sunset_B{ 123 5
+
+Emily Grace Wilson 3/12/1982
+ Female Australiª 170cm 55kg
++445554567890
+United_KGreater_London->Greater_London->London->KingstonHigh_Str->High_Str 789 2
+

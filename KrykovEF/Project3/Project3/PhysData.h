@@ -4,6 +4,8 @@
 #include <stdio.h>
 
 
+#define STRING_LEN 255
+
 typedef enum {
 	MALE = 0,
 	FEMALE = 1,

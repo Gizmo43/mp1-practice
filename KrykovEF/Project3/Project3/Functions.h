@@ -9,3 +9,4 @@ int strcmp(const char* str1, const char* str2);
 
 void scan(TLib* l1, const char* name);
 void write(TLib* l1, const char* name);
+void clean(TLib* l1);

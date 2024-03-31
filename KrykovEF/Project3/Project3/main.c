@@ -21,10 +21,11 @@ int main(int argc, char* argv[]) {
 
 	scan(&(Libr), inname);
 
-	qsort(Libr.x, Libr.n, sizeof(TPerson), compare);
+	//qsort(Libr.x, Libr.n, sizeof(TPerson), compare);
+	sortLib(&(Libr));
 
 	write(&(Libr), outname);
 
-	free(Libr.x);
+	clean(&(Libr));
 	return 0;
 }

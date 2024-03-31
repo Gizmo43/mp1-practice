@@ -3,6 +3,8 @@
 #include "date.h"
 #include "PhysData.h"
 #include "Contact.h"
+#include <string.h>
+#include <stdlib.h>
 
 #define STRING_LEN 255
 
