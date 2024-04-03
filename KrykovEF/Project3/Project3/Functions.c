@@ -3,13 +3,13 @@
 void allocate(TLib* l, int n) {
 	int i = 0;
 	l->n = n; 
+	l->x = (TPerson*)malloc(sizeof(TPerson) * l->n);
 
 	for (i = 0; i < n; i++) {
 		l->x[i].FirstName = (char*)malloc(STRING_LEN * sizeof(char));
 		l->x[i].LastName = (char*)malloc(STRING_LEN * sizeof(char));
 		l->x[i].SecondName = (char*)malloc(STRING_LEN * sizeof(char));
 
-		l->x[i].par.gender = (char*)malloc(STRING_LEN * sizeof(char));
 		l->x[i].par.nation = (char*)malloc(STRING_LEN * sizeof(char));
 
 		l->x[i].info.address.country = (char*)malloc(STRING_LEN * sizeof(char));
@@ -20,20 +20,14 @@ void allocate(TLib* l, int n) {
 	}
 };
 
-int compare(const void* a, const void* b) {
-	TPerson* PersonA = (TPerson*)a;
-	TPerson* PersonB = (TPerson*)b;
-	return (strcmp(PersonA->SecondName, PersonB->SecondName));
-}
-
-void sortLib(TLib* lib){
+void sortLib(TLib* lib) {
 	int min;
 	TPerson tmp_s;
 	for (int i = 0; i < lib->n; i++)
 	{
 		min = i;
 		for (int j = i + 1; j < lib->n; j++)
-			if ((strcmp(&(lib->x[min].SecondName), &(lib->x[j].SecondName)))>0)
+			if ((strcmp(lib->x[min].SecondName, lib->x[j].SecondName)) > 0)
 				min = j;
 
 		tmp_s = lib->x[min];
@@ -45,7 +39,6 @@ void sortLib(TLib* lib){
 }
 
 void scan(TLib* l1, const char* name) {
-	//char buf[STRING_LEN];
 	int i = 0;
 	FILE* f = fopen(name, "r");
 	if (f == NULL) {
@@ -53,8 +46,6 @@ void scan(TLib* l1, const char* name) {
 		abort();
 	}
 	fscanf(f, "%d", &(l1->n));
-	l1->x = (TPerson*)malloc(sizeof(TPerson) * l1->n);
-
 
 	allocate(l1, l1->n);
 
@@ -67,7 +58,7 @@ void scan(TLib* l1, const char* name) {
 		fscanf(f, "%d", &(l1->x[i].birth.month));
 		fscanf(f, "%d", &(l1->x[i].birth.year));
 
-		fscanf(f, "%s", (l1->x[i].par.gender));
+		fscanf(f, "%s", &(l1->x[i].par.gender));
 		fscanf(f, "%s", l1->x[i].par.nation);
 		fscanf(f, "%d", &(l1->x[i].par.height));
 		fscanf(f, "%d", &(l1->x[i].par.weight));
@@ -101,7 +92,7 @@ void write(TLib* l1,const char* name) {
 		fprintf(f, "%d/", l1->x[i].birth.month);
 		fprintf(f, "%d\n ", l1->x[i].birth.year);
 
-		fprintf(f, "%s ", (l1->x[i].par.gender));
+		fprintf(f, "%s ", &(l1->x[i].par.gender));
 		fprintf(f, "%s ", (l1->x[i].par.nation));
 		fprintf(f, "%dcm ", l1->x[i].par.height);
 		fprintf(f, "%dkg\n", l1->x[i].par.weight);
@@ -125,7 +116,6 @@ void clean(TLib* l1) {
 		free(l1->x[i].FirstName);
 		free(l1->x[i].LastName);
 		free(l1->x[i].SecondName);
-		//free(l1->x[i].par.gender);
 		free(l1->x[i].par.nation);
 		free(l1->x[i].info.address.country);
 		free(l1->x[i].info.address.area);

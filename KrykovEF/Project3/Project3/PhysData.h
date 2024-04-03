@@ -12,7 +12,7 @@ typedef enum {
 } Gender;
 
 typedef struct {
-	Gender gender; // Gender
+	Gender gender;
 	char* nation;
 	int height;
 	int weight;
