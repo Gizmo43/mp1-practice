@@ -6,11 +6,11 @@
 
 
 typedef struct {
-	char* country; // char *
-	char* area; // char *
-	char* city; // char *
-	char* district; // char *
-	char* street; // char *
+	char* country; 
+	char* area; 
+	char* city;
+	char* district; 
+	char* street; 
 	int house;
 	int flat;
 } TAddress;

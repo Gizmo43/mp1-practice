@@ -7,13 +7,13 @@
 #define STRING_LEN 255
 
 typedef enum {
-	MALE = 0,
-	FEMALE = 1,
+	Male = 0,
+	Female = 1,
 } Gender;
 
 typedef struct {
-	char* gender; // Gender
-	char* nation;  // char *
+	Gender gender; // Gender
+	char* nation;
 	int height;
 	int weight;
 }TPhysData;

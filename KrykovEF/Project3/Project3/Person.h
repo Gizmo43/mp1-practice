@@ -10,14 +10,11 @@
 
 
 typedef struct {
-	char* FirstName; // char *
-	char* LastName; // char *
-	char* SecondName; // char *
+	char* FirstName;
+	char* LastName; 
+	char* SecondName;  
 	TDate birth;
 	TPhysData par;
 	TContact info;
 
 }TPerson;
-
-
-
