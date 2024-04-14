@@ -16,5 +16,4 @@ typedef struct {
 	TDate birth;
 	TPhysData par;
 	TContact info;
-
 }TPerson;

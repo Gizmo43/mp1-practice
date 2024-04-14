@@ -10,11 +10,11 @@ French
 165
 60
 15551234567
-United_States
-California_State
-Los_Angeles
+United States
+California State
+Los Angeles
 Hollywood
-Sunset_Boulevard
+Sunset Boulevard
 123
 5
 Adam
@@ -32,7 +32,7 @@ Canada
 Ontario
 Toronto
 Downtown
-Yonge_Street
+Yonge Street
 456
 10
 Emily
@@ -46,11 +46,11 @@ Australian
 170
 55
 445554567890
-United_Kingdom
-Greater_London
+United Kingdom
+Greater London
 London
 Kingston
-High_Street
+High Street
 789
 2
 Ivan
@@ -65,9 +65,9 @@ Russian
 95
 79024044202
 Russia
-Nizhny_Novgorod_Region
-Nizhny_Novgorod
-Avtozavodsky_district
-Dyakonov_Street
+Nizhny Novgorod Region
+Nizhny Novgorod
+Avtozavodsky District
+Dyakonov Street
 14
 56

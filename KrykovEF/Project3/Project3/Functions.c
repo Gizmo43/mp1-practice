@@ -40,6 +40,7 @@ void sortLib(TLib* lib) {
 
 void scan(TLib* l1, const char* name) {
 	int i = 0;
+	char* buff = (char*)malloc(STRING_LEN);
 	FILE* f = fopen(name, "r");
 	if (f == NULL) {
 		printf("Not found");
@@ -64,11 +65,13 @@ void scan(TLib* l1, const char* name) {
 		fscanf(f, "%d", &(l1->x[i].par.weight));
 
 		fscanf(f, "%lli", &(l1->x[i].info.phone_number));
-		fscanf(f, "%s", l1->x[i].info.address.country);
-		fscanf(f, "%s", l1->x[i].info.address.area);
-		fscanf(f, "%s", l1->x[i].info.address.city);
-		fscanf(f, "%s", l1->x[i].info.address.district);
-		fscanf(f, "%s", l1->x[i].info.address.street);
+
+		fscanf(f, "%c", buff);
+		fgets(l1->x[i].info.address.country, STRING_LEN, f);
+		fgets(l1->x[i].info.address.area, STRING_LEN, f);
+		fgets(l1->x[i].info.address.city, STRING_LEN, f);
+		fgets(l1->x[i].info.address.district, STRING_LEN, f);
+		fgets(l1->x[i].info.address.street, STRING_LEN, f);
 		fscanf(f, "%d", &(l1->x[i].info.address.house));
 		fscanf(f, "%d", &(l1->x[i].info.address.flat));
 	}
@@ -98,10 +101,10 @@ void write(TLib* l1,const char* name) {
 		fprintf(f, "%dkg\n", l1->x[i].par.weight);
 
 		fprintf(f, "+%lli\n", l1->x[i].info.phone_number);
-		fprintf(f, "%s->", (l1->x[i].info.address.country));
-		fprintf(f, "%s->", (l1->x[i].info.address.area));
-		fprintf(f, "%s->", (l1->x[i].info.address.city));
-		fprintf(f, "%s->", (l1->x[i].info.address.district));
+		fprintf(f, "%s", (l1->x[i].info.address.country));
+		fprintf(f, "%s", (l1->x[i].info.address.area));
+		fprintf(f, "%s", (l1->x[i].info.address.city));
+		fprintf(f, "%s", (l1->x[i].info.address.district));
 		fprintf(f, "%s ", (l1->x[i].info.address.street));
 		fprintf(f, "%d ", l1->x[i].info.address.house);
 		fprintf(f, "%d\n", l1->x[i].info.address.flat);
@@ -111,7 +114,6 @@ void write(TLib* l1,const char* name) {
 }
 
 void clean(TLib* l1) {
-
 	for (int i = 0; i < l1->n; i++) {
 		free(l1->x[i].FirstName);
 		free(l1->x[i].LastName);
