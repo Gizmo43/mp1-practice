@@ -40,7 +40,7 @@ void sortLib(TLib* lib) {
 
 void scan(TLib* l1, const char* name) {
 	int i = 0;
-	char* buff = (char*)malloc(STRING_LEN);
+	char* buff = (char*)malloc(STRING_LEN * sizeof(char));
 	FILE* f = fopen(name, "r");
 	if (f == NULL) {
 		printf("Not found");
@@ -59,7 +59,18 @@ void scan(TLib* l1, const char* name) {
 		fscanf(f, "%d", &(l1->x[i].birth.month));
 		fscanf(f, "%d", &(l1->x[i].birth.year));
 
-		fscanf(f, "%s", &(l1->x[i].par.gender));
+		fscanf(f, "%s", buff);
+		switch (strcmp(buff, "Male")==0) {
+		case 1:
+			l1->x[i].par.gender = 0;
+			break;
+		case 0:
+			l1->x[i].par.gender = 1;
+			break;
+		default:
+			printf("Incorrect gender");
+			break;
+		}
 		fscanf(f, "%s", l1->x[i].par.nation);
 		fscanf(f, "%d", &(l1->x[i].par.height));
 		fscanf(f, "%d", &(l1->x[i].par.weight));
@@ -75,6 +86,7 @@ void scan(TLib* l1, const char* name) {
 		fscanf(f, "%d", &(l1->x[i].info.address.house));
 		fscanf(f, "%d", &(l1->x[i].info.address.flat));
 	}
+	free(buff);
 
 	fclose(f);
 }
@@ -95,7 +107,11 @@ void write(TLib* l1,const char* name) {
 		fprintf(f, "%d/", l1->x[i].birth.month);
 		fprintf(f, "%d\n ", l1->x[i].birth.year);
 
-		fprintf(f, "%s ", &(l1->x[i].par.gender));
+		if (l1->x[i].par.gender == 0)
+			fprintf(f, "Male ");
+		else
+			fprintf(f, "Female ");
+
 		fprintf(f, "%s ", (l1->x[i].par.nation));
 		fprintf(f, "%dcm ", l1->x[i].par.height);
 		fprintf(f, "%dkg\n", l1->x[i].par.weight);
