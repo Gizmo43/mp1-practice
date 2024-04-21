@@ -1,0 +1,73 @@
+4
+Sophia
+Marie
+Thompson
+15
+3
+1989
+Female
+French
+165
+60
+15551234567
+United States
+California State
+Los Angeles
+Hollywood
+Sunset Boulevard
+123
+5
+Adam
+William
+Rodriguez
+8
+6
+1995
+Male
+Mexican
+180
+75
+15559876543
+Canada
+Ontario
+Toronto
+Downtown
+Yonge Street
+456
+10
+Emily
+Grace
+Wilson
+3
+12
+1982
+Female
+Australian
+170
+55
+445554567890
+United Kingdom
+Greater London
+London
+Kingston
+High Street
+789
+2
+Ivan
+Igorevich
+Borovkov
+15
+10
+1977
+Male
+Russian
+202
+95
+79024044202
+Russia
+Nizhny Novgorod Region
+Nizhny Novgorod
+Avtozavodsky District
+Dyakonov Street
+14
+56

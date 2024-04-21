@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Person.h"
+#include <fstream>
 
 class Library
 {
@@ -10,7 +11,9 @@ private:
 public:
 	Library();
 	Library(int count);
-	Library(const std::string&);
+	Library(const string&);
 	Library(const Library&);
+	int GetCount() const;
+	TPerson GetPerson(int) const;
 	~Library();
 };

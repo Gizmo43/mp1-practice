@@ -20,15 +20,15 @@ int TDate::GetYear() const
 {
 	return this->year;
 }
-void TDate::SetDay(int)
+void TDate::SetDay(int day)
 {
 	this->day = day;
 }
-void TDate::SetMonth(int)
+void TDate::SetMonth(int month)
 {
 	this->month = month;
 }
-void TDate::SetYear(int)
+void TDate::SetYear(int year)
 {
 	this->year = year;
 }

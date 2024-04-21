@@ -21,7 +21,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, const TDate& date)
 	{
 		out << date.day << "." <<
-			date.month << "." << date.day << std::endl;
+			date.month << "." << date.year << std::endl;
 		return out;
 	}
 };
