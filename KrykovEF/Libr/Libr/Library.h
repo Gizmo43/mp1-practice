@@ -12,7 +12,7 @@ public:
 	Library();
 	Library(int count);
 	Library(const string&);
-	Library(const Library&);
+	void SortLib();
 	int GetCount() const;
 	TPerson GetPerson(int) const;
 	~Library();

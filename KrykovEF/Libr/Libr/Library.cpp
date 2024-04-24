@@ -22,8 +22,6 @@ Library::Library(const string& in_s)
 		delete[] this->list;
 	}
 	this->list = new TPerson[this->count];
-	int buf_i;
-	long long int buf_l;
 	for (int i=0;i<this->count;i++){
 		getline(f, buf_s);
 		this->list[i].SetFN(buf_s);
@@ -66,7 +64,21 @@ Library::Library(const string& in_s)
 
 
 }
-Library::Library(const Library&) {}
+void Library::SortLib() {
+	int min;
+	TPerson tmp_s;
+	for (int i = 0; i < this->count; i++)
+	{
+		min = i;
+		for (int j = i + 1; j < this->count; j++)
+			if (this->list[min].GetLN() > this->list[j].GetLN())
+				min = j;
+
+		tmp_s = this->list[min];
+		this->list[min] = this->list[i];
+		this->list[i] = tmp_s;
+	}
+}
 
 int Library::GetCount() const
 {

@@ -19,7 +19,7 @@ private:
 public:
 	TPerson();
 	TPerson(const std::string& fn, const std::string& sn, const std::string& ln, const TDate& birth, const TPhysData& phys, const Info& info);
-	//Set methods
+	
 	string GetFN() const;
 	string GetSN() const;
 	string GetLN() const;

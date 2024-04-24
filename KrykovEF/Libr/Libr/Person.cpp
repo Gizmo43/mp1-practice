@@ -79,3 +79,4 @@ void TPerson::SetHouse(int house) {
 void TPerson::SetFlat(int flat) {
 	this->info.SetFlat(flat);
 }
+
