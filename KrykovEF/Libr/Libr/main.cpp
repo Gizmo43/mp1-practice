@@ -14,14 +14,15 @@ int main(int argc, char* argv[]) {
 	}
 	inname = argv[1];
 	string in_s(inname);
-
 	Library Lib(in_s);
+	try {
 
-	Lib.SortLib();
-
-	for (int i = 0; i < Lib.GetCount(); i++) {
-		cout << Lib.GetPerson(i);
+		Lib.SortLib();
+		cout << Lib;
 	}
-
+	catch (const exception& err)
+	{
+		cout << err.what() << endl;
+	}
 	return 0;
 }

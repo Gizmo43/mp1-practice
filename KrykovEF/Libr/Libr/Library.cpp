@@ -60,9 +60,6 @@ Library::Library(const string& in_s)
 		getline(f, buf_s);
 		this->list[i].SetFlat(atoi(buf_s.c_str()));
 	}
-
-
-
 }
 void Library::SortLib() {
 	int min;

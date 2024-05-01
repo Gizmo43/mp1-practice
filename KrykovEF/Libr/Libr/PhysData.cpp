@@ -3,7 +3,7 @@
 
 
 TPhysData::TPhysData(){}
-TPhysData::TPhysData(const std::string& gender, const std::string& nation, int height, int weight) {
+TPhysData::TPhysData(const string& gender, const string& nation, int height, int weight) {
 	this->gender = gender;
 	this->nation = nation;
 	this->height = height;
@@ -17,8 +17,14 @@ void TPhysData::SetNation(string nation) {
 	this->nation = nation;
 }
 void TPhysData::SetH(int height) {
+	if (height < 1) {
+		throw std::exception("Wrong height");
+	}
 	this->height = height;
 }
 void TPhysData::SetW(int weight) {
+	if (weight < 1) {
+		throw std::exception("Wrong weight");
+	}
 	this->weight = weight;
 }
