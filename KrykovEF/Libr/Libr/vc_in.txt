@@ -1,24 +1,6 @@
 4
-Sophia
-Marie
-Thompson
-15
-3
-1989
-Female
-French
-165
-60
-15551234567
-United States
-California State
-Los Angeles
-Hollywood
-Sunset Boulevard
-123
-5
-Adam
-William
+Sophia;Marie;Thompson;15;3;1989;Female;French;165;60;15551234567;United States;California State;Los Angeles;Hollywood;Sunset Boulevard;123;5;
+Adam;William;
 Rodriguez
 8
 6

@@ -14,9 +14,8 @@ int main(int argc, char* argv[]) {
 	}
 	inname = argv[1];
 	string in_s(inname);
-	Library Lib(in_s);
 	try {
-
+		Library Lib(in_s);
 		Lib.SortLib();
 		cout << Lib;
 	}
