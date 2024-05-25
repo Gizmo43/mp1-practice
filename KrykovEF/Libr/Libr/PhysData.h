@@ -3,13 +3,15 @@
 #include <iostream>
 #include <exception>
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
+enum class Gender { Male, Female };
 
 class TPhysData 
 {
 private:
-	string gender;
+	Gender gender;
 	string nation;
 	int height;
 	int weight;
@@ -24,7 +26,14 @@ public:
 
 	friend std::ostream& operator<<(ostream& out, const TPhysData& phys)
 	{
-		out << phys.gender << " " << phys.nation << " " <<
+		string tmp;
+		if (phys.gender == Gender::Male) {
+			tmp = "Male";
+		}
+		else if (phys.gender == Gender::Female) {
+			tmp = "Female";
+		}
+		out << tmp << " " << phys.nation << " " <<
 			phys.height << "cm " << phys.weight << "kg " << endl;
 		return out;
 	}

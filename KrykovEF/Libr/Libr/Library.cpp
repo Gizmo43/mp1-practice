@@ -23,42 +23,42 @@ Library::Library(const string& in_s)
 	}
 	this->list = new TPerson[this->count];
 	for (int i=0;i<this->count;i++){
-		getline(f, buf_s);
-		this->list[i].SetFN(buf_s);
-		getline(f, buf_s);
-		this->list[i].SetSN(buf_s);
-		getline(f, buf_s);
-		this->list[i].SetLN(buf_s);
-		getline(f, buf_s);
+		getline(f, buf_s,';');
+		this->list[i].first_name = buf_s;
+		getline(f, buf_s, ';');
+		this->list[i].second_name = buf_s;
+		getline(f, buf_s, ';');
+		this->list[i].last_name = buf_s;
+		getline(f, buf_s, ';');
 		this->list[i].SetDay(atoi(buf_s.c_str()));
-		getline(f, buf_s);
+		getline(f, buf_s, ';');
 		this->list[i].SetMonth(atoi(buf_s.c_str()));
-		getline(f, buf_s);
+		getline(f, buf_s, ';');
 		this->list[i].SetYear(atoi(buf_s.c_str()));
-		getline(f, buf_s);
+		getline(f, buf_s, ';');
 		this->list[i].SetGender(buf_s);
-		getline(f, buf_s);
+		getline(f, buf_s, ';');
 		this->list[i].SetNation(buf_s);
-		getline(f, buf_s);
+		getline(f, buf_s, ';');
 		this->list[i].SetH(atoi(buf_s.c_str()));
-		getline(f, buf_s);
+		getline(f, buf_s, ';');
 		this->list[i].SetW(atoi(buf_s.c_str()));
-		getline(f, buf_s);
-		this->list[i].SetNumber(atoll(buf_s.c_str()));
-		getline(f, buf_s);
-		this->list[i].SetCountry(buf_s);
-		getline(f, buf_s);
-		this->list[i].SetArea(buf_s);
-		getline(f, buf_s);
-		this->list[i].SetCity(buf_s);
-		getline(f, buf_s);
-		this->list[i].SetDistrict(buf_s);
-		getline(f, buf_s);
-		this->list[i].SetStreet(buf_s);
-		getline(f, buf_s);
-		this->list[i].SetHouse(atoi(buf_s.c_str()));
-		getline(f, buf_s);
-		this->list[i].SetFlat(atoi(buf_s.c_str()));
+		getline(f, buf_s, ';');
+		this->list[i].info.phone_number = atoll(buf_s.c_str());
+		getline(f, buf_s, ';');
+		this->list[i].info.addres.country = buf_s;
+		getline(f, buf_s, ';');
+		this->list[i].info.addres.area = buf_s;
+		getline(f, buf_s, ';');
+		this->list[i].info.addres.city = buf_s;
+		getline(f, buf_s, ';');
+		this->list[i].info.addres.district = buf_s;
+		getline(f, buf_s, ';');
+		this->list[i].info.addres.street = buf_s;
+		getline(f, buf_s, ';');
+		this->list[i].info.addres.house = atoi(buf_s.c_str());
+		getline(f, buf_s, ';');
+		this->list[i].info.addres.flat = atoi(buf_s.c_str());
 	}
 }
 void Library::SortLib() {
@@ -68,7 +68,7 @@ void Library::SortLib() {
 	{
 		min = i;
 		for (int j = i + 1; j < this->count; j++)
-			if (this->list[min].GetLN() > this->list[j].GetLN())
+			if (this->list[min].last_name > this->list[j].last_name)
 				min = j;
 
 		tmp_s = this->list[min];
@@ -77,14 +77,7 @@ void Library::SortLib() {
 	}
 }
 
-int Library::GetCount() const
-{
-	return this->count;
-}
-TPerson Library::GetPerson(int i) const
-{
-	return this->list[i];
-}
+
 Library::~Library()
 {
 	if (this->list != nullptr)

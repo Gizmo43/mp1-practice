@@ -36,5 +36,8 @@ void TDate::SetMonth(int month)
 }
 void TDate::SetYear(int year)
 {
+if ((year < 0) ) {
+	throw std::exception("Wrong year");
+}
 	this->year = year;
 }

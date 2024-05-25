@@ -4,14 +4,30 @@
 
 TPhysData::TPhysData(){}
 TPhysData::TPhysData(const string& gender, const string& nation, int height, int weight) {
-	this->gender = gender;
+	if (gender == "Male") {
+		this->gender = Gender::Male;
+	}
+	else if (gender == "Female") {
+		this->gender = Gender::Female;
+	}
+	else {
+		throw std::exception("Wrong gender");
+	}
 	this->nation = nation;
 	this->height = height;
 	this->weight = weight;
 }
 
 void TPhysData::SetGender(string gender) {
-	this->gender = gender;
+	if (gender == "Male") {
+		this->gender = Gender::Male;
+	}
+	else if (gender == "Female") {
+		this->gender = Gender::Female;
+	}
+	else{
+		throw std::exception("Wrong gender");
+	}
 }
 void TPhysData::SetNation(string nation) {
 	this->nation = nation;
